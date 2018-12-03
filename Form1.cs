@@ -236,14 +236,17 @@ namespace Eva_Compiler_And_IDE
                         string result = Interaction.InputBox(stringtospeak, stringtospeak);
                         Output.Items.Add(result);
                     }
-                    if(line.ToUpper().StartsWith("sound"))
+                    if(line.ToLower().StartsWith("sound"))
                     {
                         string pat;
                         if (File.Exists(line.Remove(0, 6)))
                         {
                             pat = line.Remove(0, 6);
+                            SoundPlayer soundPlayer = new SoundPlayer(pat);
+                        } else {
+                        Output.Items.Add("File Not Found");
                         }
-                        SoundPlayer soundPlayer = new SoundPlayer(pat);
+                        
                     }
                 }
             }
