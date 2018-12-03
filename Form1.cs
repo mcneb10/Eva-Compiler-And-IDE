@@ -238,13 +238,13 @@ namespace Eva_Compiler_And_IDE
                     }
                     if(line.ToLower().StartsWith("sound"))
                     {
-                        string pat;
-                        if (File.Exists(line.Remove(0, 6)))
+                        string pat = line.Remove(0, 6);
+                        if (File.Exists(pat))
                         {
-                            pat = line.Remove(0, 6);
                             SoundPlayer soundPlayer = new SoundPlayer(pat);
+                           soundPlayer.Play(); 
                         } else {
-                        Output.Items.Add("File Not Found");
+                        Output.Items.Add("File "+pat+" Not Found");
                         }
                         
                     }
